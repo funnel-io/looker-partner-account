@@ -11,7 +11,7 @@
   elements:
   - title: Total Clicks by Traffic Source
     name: Total Clicks by Traffic Source
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_column
     fields: [funnel_data.total_clicks, funnel_data.traffic_source, funnel_data.ad_date]
@@ -65,7 +65,7 @@
     height: 8
   - title: Cost per Click Over Time
     name: Cost per Click Over Time
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_area
     fields: [funnel_data.cost_per_click, funnel_data.total_clicks, funnel_data.ad_date]
@@ -126,7 +126,7 @@
     height: 7
   - title: Impressions
     name: Impressions
-    model: funnel
+    model: demo
     explore: funnel_data
     type: single_value
     fields: [funnel_data.total_impressions, funnel_data.total_clicks, funnel_data.cost_per_impression,
@@ -183,7 +183,7 @@
     height: 5
   - title: CPM
     name: CPM
-    model: funnel
+    model: demo
     explore: funnel_data
     type: single_value
     fields: [funnel_data.total_impressions, funnel_data.total_clicks, funnel_data.cost_per_impression,
@@ -236,7 +236,7 @@
     height: 5
   - title: Cost Per Click
     name: Cost Per Click
-    model: funnel
+    model: demo
     explore: funnel_data
     type: single_value
     fields: [funnel_data.total_impressions, funnel_data.total_clicks, funnel_data.total_cost,
@@ -286,7 +286,7 @@
     height: 5
   - title: Clicks
     name: Clicks
-    model: funnel
+    model: demo
     explore: funnel_data
     type: single_value
     fields: [funnel_data.total_clicks, funnel_data.total_impressions, funnel_data.total_cost,
@@ -336,7 +336,7 @@
     height: 5
   - title: Conversions
     name: Conversions
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_column
     fields: [funnel_data.total_impressions, funnel_data.total_clicks]
@@ -408,7 +408,7 @@
     height: 5
   - title: Campaigns - Timeline
     name: Campaigns - Timeline
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_timeline
     fields: [funnel_data.campaign, campaign_data.campaign_start_date, campaign_data.campaign_end_date,
@@ -477,7 +477,7 @@
     height: 8
   - title: Ad Spend
     name: Ad Spend
-    model: funnel
+    model: demo
     explore: funnel_data
     type: single_value
     fields: [funnel_data.total_cost]
@@ -578,7 +578,7 @@
     height: 2
   - title: Top Spend Campaigns
     name: Top Spend Campaigns
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_grid
     fields: [funnel_data.campaign, funnel_data.total_cost]
@@ -656,7 +656,7 @@
     height: 10
   - title: CTR over Time
     name: CTR over Time
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_area
     fields: [funnel_data.ad_date, funnel_data.click_rate, funnel_data.total_clicks]
@@ -714,7 +714,7 @@
     height: 7
   - title: Top Performing Keywords
     name: Top Performing Keywords
-    model: funnel
+    model: demo
     explore: funnel_data
     type: table
     fields: [funnel_data.keyword, funnel_data.total_clicks, funnel_data.total_impressions,
@@ -780,7 +780,7 @@
     height: 10
   - title: Keyword Cost
     name: Keyword Cost
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_column
     fields: [funnel_data.keyword, funnel_data.total_cost]
@@ -827,7 +827,7 @@
     height: 10
   - title: CTR By Day of Week
     name: CTR By Day of Week
-    model: funnel
+    model: demo
     explore: funnel_data
     type: table
     fields: [funnel_data.click_rate, funnel_data.ad_day_of_month, funnel_data.ad_day_of_week]
@@ -867,7 +867,7 @@
     height: 2
   - title: Cost by Traffic Source
     name: Cost by Traffic Source
-    model: funnel
+    model: demo
     explore: funnel_data
     type: looker_pie
     fields: [funnel_data.traffic_source, funnel_data.total_cost]
@@ -930,7 +930,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: funnel
+    model: demo
     explore: funnel_data
     listens_to_filters: []
     field: funnel_data.campaign
@@ -940,7 +940,7 @@
     default_value: 90 days
     allow_multiple_values: true
     required: false
-    model: funnel
+    model: demo
     explore: funnel_data
     listens_to_filters: []
     field: funnel_data.ad_date
