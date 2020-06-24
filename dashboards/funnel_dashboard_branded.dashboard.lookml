@@ -1,5 +1,5 @@
 - dashboard: advertising_pulse
-  title: Advertising Pulse
+  title: Advertising Pulse (Funnel)
   layout: newspaper
   embed_style:
     background_color: "#f6f8fa"
