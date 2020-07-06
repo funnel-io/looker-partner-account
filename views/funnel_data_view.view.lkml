@@ -1,37 +1,3 @@
-view: campaign_data {
-  derived_table: {
-    sql:
-    SELECT
-      Campaign  AS campaign,
-      MIN(Date)  AS start_date,
-      MAX(Date) AS end_date
-    FROM `firebase-funnel.looker_demo.looker_demo_view`
-
-    GROUP BY 1
-     ;;
-
-    }
-    dimension: campaign {
-      hidden: yes
-      type: string
-      sql: ${TABLE}.campaign ;;
-    }
-
-    dimension_group: campaign_start {
-      type: time
-      datatype: date
-      timeframes: [raw,date]
-      sql: ${TABLE}.start_date ;;
-    }
-
-    dimension_group: campaign_end {
-      type: time
-      datatype: date
-      timeframes :[raw,date]
-      sql: ${TABLE}.end_date ;;
-    }
-  }
-
 
   view: funnel_data {
     sql_table_name: `firebase-funnel.looker_demo.looker_demo_view`;;
@@ -112,6 +78,7 @@ view: campaign_data {
     }
 
     measure: count {
+      hidden: yes
       type: count
       drill_fields: [detail*]
     }
@@ -119,7 +86,7 @@ view: campaign_data {
     measure: total_cost {
       type: sum
       sql: ${cost} ;;
-      value_format_name: decimal_0
+      value_format_name: usd_0
       drill_fields: [detail*]
     }
 
@@ -152,7 +119,7 @@ view: campaign_data {
       description: "Average cost per ad click."
       type: number
       sql: ${total_cost}* 1.0/ NULLIF(${total_clicks},0) ;;
-      value_format_name: decimal_2
+      value_format_name: usd
       drill_fields: [detail*]
     }
 
@@ -161,7 +128,7 @@ view: campaign_data {
       description: "Average cost per one thousand ad impressions for display ads."
       type: number
       sql: ${total_cost}* 1.0/ NULLIF(1.0*${total_impressions}/1000,0) ;;
-      value_format_name: decimal_2
+      value_format_name: usd
       drill_fields: [detail*]
     }
 

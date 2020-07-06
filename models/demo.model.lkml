@@ -10,10 +10,4 @@ datagroup: demo_default_datagroup {
 
 persist_with: demo_default_datagroup
 
-explore: funnel_data {
-  join: campaign_data {
-    type: left_outer
-    sql_on: ${funnel_data.campaign}=${campaign_data.campaign} ;;
-    relationship: many_to_one
-  }
-}
+explore: funnel_data {}
