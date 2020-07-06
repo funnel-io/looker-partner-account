@@ -63,27 +63,23 @@
       hidden: yes
       type: number
       sql: ${TABLE}.Cost ;;
-      drill_fields: [detail*]
     }
 
     dimension: clicks {
       hidden: yes
       type: number
       sql: ${TABLE}.Clicks ;;
-      drill_fields: [detail*]
     }
 
     dimension: impressions {
       hidden: yes
       type: number
       sql: ${TABLE}.Impressions ;;
-      drill_fields: [detail*]
     }
 
     measure: count {
       hidden: yes
       type: count
-      drill_fields: [detail*]
     }
 
     measure: total_cost {
@@ -139,9 +135,9 @@
     set: detail {
       fields: [
         ad_date,
-        cost,
-        clicks,
-        impressions
+        total_cost,
+        total_clicks,
+        total_impressions
       ]
     }
   }
