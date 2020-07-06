@@ -63,18 +63,21 @@
       hidden: yes
       type: number
       sql: ${TABLE}.Cost ;;
+      drill_fields: [detail*]
     }
 
     dimension: clicks {
       hidden: yes
       type: number
       sql: ${TABLE}.Clicks ;;
+      drill_fields: [detail*]
     }
 
     dimension: impressions {
       hidden: yes
       type: number
       sql: ${TABLE}.Impressions ;;
+      drill_fields: [detail*]
     }
 
     measure: count {
@@ -136,16 +139,6 @@
     set: detail {
       fields: [
         ad_date,
-        connection_type_code,
-        connection_id,
-        currency,
-        traffic_source,
-        media_type,
-        paid_organic,
-        campaign,
-        ad_group,
-        ad,
-        keyword,
         cost,
         clicks,
         impressions
