@@ -1,6 +1,7 @@
 - dashboard: advertising_pulse_funnel
   title: Advertising Pulse (Funnel)
   layout: newspaper
+  preferred_viewer: dashboards-next
   embed_style:
     background_color: "#f6f8fa"
     show_title: false
@@ -110,10 +111,10 @@
     listen:
       Campaign Name: funnel_data.campaign
       Date: funnel_data.ad_date
-    row: 17
+    row: 15
     col: 0
     width: 24
-    height: 6
+    height: 5
   - title: CPC Over Time
     name: CPC Over Time
     model: demo
@@ -151,6 +152,11 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    color_application:
+      collection_id: funnel
+      palette_id: funnel-categorical-0
+      options:
+        steps: 5
     y_axes: [{label: CPC, maxValue: !!null '', minValue: !!null '', orientation: left,
         showLabels: true, showValues: true, tickDensity: default, tickDensityCustom: 5,
         type: linear, unpinAxis: false, valueFormat: !!null '', series: [{id: funnel_data.cost_per_click,
@@ -164,8 +170,7 @@
     series_types:
       funnel_data.total_clicks: column
     series_colors:
-      funnel_data.cost_per_click: "#fcae65"
-      funnel_data.total_clicks: "#ed7a3e"
+      funnel_data.total_clicks: "#00717d"
     series_labels:
       funnel_data.cost_per_click: CPC
       funnel_data.total_clicks: Click
@@ -186,9 +191,7 @@
     model: demo
     explore: funnel_data
     type: single_value
-    fields: [funnel_data.total_impressions, funnel_data.total_clicks, funnel_data.cost_per_impression,
-      funnel_data.total_cost]
-    sorts: [funnel_data.total_clicks desc]
+    fields: [funnel_data.total_impressions]
     limit: 500
     column_limit: 50
     dynamic_fields: [{table_calculation: type, label: Type, expression: '"Display"',
@@ -197,15 +200,15 @@
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
-    comparison_type: progress_percentage
+    comparison_type: value
     comparison_reverse_colors: false
     show_comparison_label: true
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#ed7a3e"
+    custom_color: "#00717d"
     single_value_title: Total Impressions
-    comparison_label: ''
+    comparison_label: Last week
     map_plot_mode: points
     heatmap_gridlines: false
     heatmap_gridlines_empty: false
@@ -228,7 +231,7 @@
     quantize_map_value_colors: false
     reverse_map_value_colors: false
     series_types: {}
-    hidden_fields: [funnel_data.cost_per_impression, funnel_data.total_clicks, funnel_data.total_cost]
+    hidden_fields: []
     y_axes: []
     defaults_version: 1
     listen:
@@ -243,14 +246,12 @@
     model: demo
     explore: funnel_data
     type: single_value
-    fields: [funnel_data.total_impressions, funnel_data.total_clicks, funnel_data.cost_per_impression,
-      funnel_data.total_cost]
-    sorts: [funnel_data.total_clicks desc]
+    fields: [funnel_data.cost_per_impression]
     limit: 500
     column_limit: 50
     dynamic_fields: [{table_calculation: type, label: Type, expression: '"Display"',
         value_format: !!null '', value_format_name: !!null '', _kind_hint: dimension,
-        _type_hint: string}]
+        _type_hint: string, is_disabled: false}]
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -260,9 +261,9 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#ed7a3e"
+    custom_color: "#00717d"
     single_value_title: CPM
-    comparison_label: Impressions
+    comparison_label: Last week
     map_plot_mode: points
     heatmap_gridlines: false
     heatmap_gridlines_empty: false
@@ -285,7 +286,7 @@
     quantize_map_value_colors: false
     reverse_map_value_colors: false
     series_types: {}
-    hidden_fields: [funnel_data.total_clicks, funnel_data.total_cost, funnel_data.total_impressions]
+    hidden_fields: [type]
     y_axes: []
     defaults_version: 1
     listen:
@@ -300,9 +301,7 @@
     model: demo
     explore: funnel_data
     type: single_value
-    fields: [funnel_data.total_impressions, funnel_data.total_clicks, funnel_data.total_cost,
-      funnel_data.cost_per_click]
-    sorts: [funnel_data.total_clicks desc]
+    fields: [funnel_data.cost_per_click]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -314,9 +313,12 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#ed7a3e"
+    color_application:
+      collection_id: funnel
+      palette_id: funnel-categorical-0
+    custom_color: "#00717d"
     single_value_title: CPC
-    comparison_label: Impressions
+    comparison_label: Last week
     map_plot_mode: points
     heatmap_gridlines: false
     heatmap_gridlines_empty: false
@@ -339,7 +341,7 @@
     quantize_map_value_colors: false
     reverse_map_value_colors: false
     series_types: {}
-    hidden_fields: [funnel_data.total_clicks, funnel_data.total_cost, funnel_data.total_impressions]
+    hidden_fields: []
     y_axes: []
     defaults_version: 1
     listen:
@@ -368,7 +370,7 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#ed7a3e"
+    custom_color: "#00717d"
     single_value_title: Clicks
     comparison_label: Impressions
     map_plot_mode: points
@@ -440,24 +442,11 @@
     show_silhouette: false
     totals_color: "#808080"
     color_application:
-      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      custom:
-        id: 0eaa41b1-6185-b052-7233-683a11bc7c04
-        label: Custom
-        type: continuous
-        stops:
-        - color: "#E57947"
-          offset: 0
-        - color: "#FBB555"
-          offset: 25
-        - color: "#ffffff"
-          offset: 50
-        - color: "#3EB0D5"
-          offset: 75
-        - color: "#ffbe63"
-          offset: 100
+      collection_id: funnel
+      palette_id: funnel-categorical-0
       options:
         steps: 5
+        reverse: false
     y_axes: [{label: '', orientation: left, series: [{axisId: funnel_data.total_impressions,
             id: funnel_data.total_impressions, name: Total Impressions}, {axisId: funnel_data.total_clicks,
             id: funnel_data.total_clicks, name: Total Clicks}], showLabels: true,
@@ -466,8 +455,8 @@
     colors: ["#54538f", "#88a7a9", "#605772", "#5b8ebe", "#7ec99a", "#5db794"]
     series_types: {}
     series_colors:
-      funnel_data.total_impressions: "#ed7a3e"
-      funnel_data.total_clicks: "#ffa158"
+      funnel_data.total_impressions: "#00717d"
+      funnel_data.total_clicks: "#0097a7"
     series_labels:
       sessions.count_purchase: Conversions (Purchases)
     show_dropoff: true
@@ -541,8 +530,8 @@
     col: 16
     width: 8
     height: 5
-  - title: Cost per Campaigns
-    name: Cost per Campaigns
+  - title: Cost per Campaign
+    name: Cost per Campaign
     model: demo
     explore: funnel_data
     type: looker_grid
@@ -572,16 +561,15 @@
       funnel_data.total_cost:
         is_active: true
         palette:
-          palette_id: 9fc4dd92-9abf-efcd-570f-e4a481090299
-          collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-          custom_colors:
-          - "#ffffff"
-          - "#FBB555"
-          - "#E57947"
+          palette_id: funnel-sequential-0
+          collection_id: funnel
     limit_displayed_rows_values:
       show_hide: show
       first_last: first
       num_rows: '50'
+    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: "#0097a7",
+        font_color: !!null '', color_application: {collection_id: funnel, palette_id: funnel-sequential-0},
+        bold: false, italic: false, strikethrough: false, fields: !!null ''}]
     funnel_data.total_cost:
     is_active: true
     palette:
@@ -618,10 +606,10 @@
     listen:
       Campaign Name: funnel_data.campaign
       Date: funnel_data.ad_date
-    row: 31
-    col: 12
-    width: 12
-    height: 6
+    row: 26
+    col: 16
+    width: 8
+    height: 7
   - title: Top Performing Keywords
     name: Top Performing Keywords
     model: demo
@@ -657,20 +645,13 @@
     series_cell_visualizations:
       funnel_data.total_clicks:
         is_active: false
-    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: !!null '',
-        font_color: !!null '', palette: {name: Custom, colors: ["#ffffff", "#87d79b"]},
-        bold: false, italic: false, strikethrough: false, fields: [funnel_data.click_rate],
-        color_application: {collection_id: legacy, custom: {id: da8a6697-a794-1eb0-4352-607c43c3994e,
-            label: Custom, type: continuous, stops: [{color: "#ed7a3e", offset: 0},
-              {color: "#ed904d", offset: 25}, {color: "#fcae65", offset: 50}, {color: "#ffd18d",
-                offset: 75}, {color: "#ffffff", offset: 100}]}, options: {steps: 5,
-            reverse: true, stepped: false}}}, {type: along a scale..., value: !!null '',
-        background_color: !!null '', font_color: !!null '', palette: {name: Custom,
-          colors: ["#ffffff", "#87d79b"]}, bold: false, italic: false, strikethrough: false,
-        fields: []}, {type: along a scale..., value: !!null '', background_color: !!null '',
-        font_color: !!null '', palette: {name: Custom, colors: ["#ffffff", "#FFFFFF",
-            "#87d79b"]}, bold: false, italic: false, strikethrough: false, fields: [
-          funnel_data.click_rate]}]
+      funnel_data.click_rate:
+        is_active: true
+        value_display: true
+        palette:
+          palette_id: funnel-sequential-0
+          collection_id: funnel
+    conditional_formatting: []
     truncate_column_names: false
     stacking: ''
     show_value_labels: false
@@ -701,10 +682,10 @@
     listen:
       Campaign Name: funnel_data.campaign
       Date: funnel_data.ad_date
-    row: 37
-    col: 12
-    width: 12
-    height: 7
+    row: 33
+    col: 0
+    width: 24
+    height: 8
   - title: Cost per Keyword
     name: Cost per Keyword
     model: demo
@@ -745,24 +726,8 @@
     show_silhouette: false
     totals_color: "#808080"
     color_application:
-      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      custom:
-        id: 4687ee21-baf7-dafc-2b8b-ffafaa458076
-        label: Custom
-        type: discrete
-        colors:
-        - "#ed7a3e"
-        - "#B1399E"
-        - "#C2DD67"
-        - "#592EC2"
-        - "#4276BE"
-        - "#72D16D"
-        - "#FFD95F"
-        - "#B32F37"
-        - "#9174F0"
-        - "#E57947"
-        - "#75E2E2"
-        - "#FBB555"
+      collection_id: funnel
+      palette_id: funnel-categorical-0
       options:
         steps: 5
     y_axes: [{label: '', orientation: left, series: [{axisId: funnel_data.total_cost,
@@ -776,7 +741,7 @@
     listen:
       Campaign Name: funnel_data.campaign
       Date: funnel_data.ad_date
-    row: 44
+    row: 41
     col: 0
     width: 24
     height: 10
@@ -793,7 +758,7 @@
     dynamic_fields: [{table_calculation: change, label: "% Change", expression: "${funnel_data.total_cost}/offset(${funnel_data.total_cost},1)-1",
         value_format: !!null '', value_format_name: percent_0, is_disabled: true,
         _kind_hint: measure, _type_hint: number}, {table_calculation: 7_day_rolling_average,
-        label: 7 day rolling average, expression: 'mean(offset_list(${funnel_data.total_cost},0,7))',
+        label: 7 Day Rolling Average, expression: 'mean(offset_list(${funnel_data.total_cost},0,7))',
         value_format: !!null '', value_format_name: usd_0, _kind_hint: measure, _type_hint: number}]
     query_timezone: America/Los_Angeles
     x_axis_gridlines: false
@@ -806,7 +771,7 @@
     show_x_axis_label: true
     show_x_axis_ticks: false
     y_axis_scale_mode: linear
-    x_axis_reversed: false
+    x_axis_reversed: true
     y_axis_reversed: false
     plot_size_by_field: false
     trellis: ''
@@ -824,22 +789,8 @@
     show_silhouette: false
     totals_color: "#808080"
     color_application:
-      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      custom:
-        id: 752929fb-9030-ef3a-2b93-639dc8517ee7
-        label: Custom
-        type: continuous
-        stops:
-        - color: "#ed7a3e"
-          offset: 0
-        - color: "#FBB555"
-          offset: 25
-        - color: "#ffffff"
-          offset: 50
-        - color: "#3EB0D5"
-          offset: 75
-        - color: "#4276BE"
-          offset: 100
+      collection_id: funnel
+      palette_id: funnel-categorical-0
       options:
         steps: 5
     y_axes: [{label: Total Cost, orientation: left, series: [{axisId: funnel_data.total_cost,
@@ -849,7 +800,7 @@
     series_types:
       7_day_rolling_average: line
     series_colors:
-      7_day_rolling_average: "#000000"
+      7_day_rolling_average: "#595959"
     series_labels:
       funnel_data.total_cost: Total Cost
     trend_lines: []
@@ -873,7 +824,7 @@
     listen:
       Campaign Name: funnel_data.campaign
       Date: funnel_data.ad_date
-    row: 25
+    row: 20
     col: 0
     width: 24
     height: 6
@@ -914,6 +865,11 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    color_application:
+      collection_id: funnel
+      palette_id: funnel-categorical-0
+      options:
+        steps: 5
     y_axes: [{label: CPC, maxValue: !!null '', minValue: !!null '', orientation: left,
         showLabels: true, showValues: true, tickDensity: default, tickDensityCustom: 5,
         type: linear, unpinAxis: false, valueFormat: !!null '', series: [{id: funnel_data.cost_per_click,
@@ -927,8 +883,7 @@
     series_types:
       funnel_data.total_clicks: column
     series_colors:
-      funnel_data.total_clicks: "#ed7a3e"
-      funnel_data.click_rate: "#fcae65"
+      funnel_data.total_clicks: "#00717d"
     series_labels:
       funnel_data.cost_per_click: CPC
       funnel_data.total_clicks: Click
@@ -984,114 +939,12 @@
     show_silhouette: false
     totals_color: "#808080"
     color_application:
-      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      palette_id: 1e4d66b9-f066-4c33-b0b7-cc10b4810688
+      collection_id: funnel
+      palette_id: funnel-categorical-0
       options:
         steps: 5
     y_axes: [{label: '', orientation: bottom, series: [{axisId: funnel_data.total_cost,
-            id: funnel_data.total_cost, name: Total Cost}], showLabels: true, showValues: false,
-        unpinAxis: false, tickDensity: default, type: linear}]
-    x_axis_label: Traffic Source
-    colors: ["#294988", "#87d79b", "#476d70", "#294259", "#747474"]
-    label_value_format: ''
-    series_types: {}
-    series_colors:
-      funnel_data.total_cost: "#ed7a3e"
-    series_labels:
-      funnel_data.total_clicks: Total Cost
-    show_row_numbers: false
-    transpose: false
-    truncate_text: true
-    hide_totals: false
-    hide_row_totals: false
-    size_to_fit: true
-    table_theme: white
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    show_sql_query_menu_options: false
-    show_totals: true
-    show_row_totals: true
-    series_cell_visualizations:
-      funnel_data.total_clicks:
-        is_active: true
-        value_display: true
-        palette:
-          palette_id: 85de97da-2ded-4dec-9dbd-e6a7d36d5825
-          collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      funnel_data.total_cost:
-        is_active: true
-        palette:
-          palette_id: 85de97da-2ded-4dec-9dbd-e6a7d36d5825
-          collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-    show_null_points: true
-    interpolation: monotone
-    hidden_fields: []
-    defaults_version: 1
-    listen:
-      Campaign Name: funnel_data.campaign
-      Date: funnel_data.ad_date
-    row: 31
-    col: 0
-    width: 12
-    height: 6
-  - title: Cost per Media Type
-    name: Cost per Media Type
-    model: demo
-    explore: funnel_data
-    type: looker_bar
-    fields: [funnel_data.total_cost, funnel_data.media_type]
-    filters:
-      funnel_data.media_type: "-NULL"
-    sorts: [funnel_data.total_cost desc]
-    limit: 500
-    query_timezone: America/Los_Angeles
-    x_axis_gridlines: false
-    y_axis_gridlines: false
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: normal
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: true
-    show_silhouette: false
-    totals_color: "#808080"
-    color_application:
-      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      custom:
-        id: 92dc32e2-0db3-5e14-20fa-7b7f6fea2685
-        label: Custom
-        type: discrete
-        colors:
-        - "#ed7a3e"
-        - "#87d79b"
-        - "#476d70"
-        - "#294259"
-        - "#747474"
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: bottom, series: [{axisId: funnel_data.total_cost,
-            id: funnel_data.total_cost, name: Total Cost}], showLabels: true, showValues: false,
+            id: funnel_data.total_cost, name: Total Cost}], showLabels: false, showValues: false,
         unpinAxis: false, tickDensity: default, type: linear}]
     x_axis_label: Traffic Source
     colors: ["#294988", "#87d79b", "#476d70", "#294259", "#747474"]
@@ -1135,9 +988,101 @@
     listen:
       Campaign Name: funnel_data.campaign
       Date: funnel_data.ad_date
-    row: 37
+    row: 26
     col: 0
-    width: 12
+    width: 8
+    height: 7
+  - title: Cost per Media Type
+    name: Cost per Media Type
+    model: demo
+    explore: funnel_data
+    type: looker_bar
+    fields: [funnel_data.total_cost, funnel_data.media_type]
+    filters:
+      funnel_data.media_type: "-NULL"
+    sorts: [funnel_data.total_cost desc]
+    limit: 500
+    query_timezone: America/Los_Angeles
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: normal
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: true
+    show_silhouette: false
+    totals_color: "#808080"
+    color_application:
+      collection_id: funnel
+      palette_id: funnel-categorical-0
+      options:
+        steps: 5
+    y_axes: [{label: '', orientation: bottom, series: [{axisId: funnel_data.total_cost,
+            id: funnel_data.total_cost, name: Total Cost}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, type: linear}]
+    x_axis_label: Traffic Source
+    colors: ["#294988", "#87d79b", "#476d70", "#294259", "#747474"]
+    label_value_format: ''
+    series_types: {}
+    series_colors: {}
+    series_labels:
+      funnel_data.total_clicks: Total Cost
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    series_cell_visualizations:
+      funnel_data.total_clicks:
+        is_active: true
+        value_display: true
+        palette:
+          palette_id: 85de97da-2ded-4dec-9dbd-e6a7d36d5825
+          collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
+      funnel_data.total_cost:
+        is_active: true
+        palette:
+          palette_id: 85de97da-2ded-4dec-9dbd-e6a7d36d5825
+          collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
+    show_null_points: true
+    interpolation: monotone
+    hidden_fields: []
+    defaults_version: 1
+    listen:
+      Campaign Name: funnel_data.campaign
+      Date: funnel_data.ad_date
+    row: 26
+    col: 8
+    width: 8
     height: 7
   - name: ''
     type: text
@@ -1166,24 +1111,6 @@
     col: 16
     width: 8
     height: 3
-  - name: " (4)"
-    type: text
-    title_text: ''
-    subtitle_text: ''
-    body_text: ''
-    row: 15
-    col: 0
-    width: 24
-    height: 2
-  - name: " (5)"
-    type: text
-    title_text: ''
-    subtitle_text: ''
-    body_text: ''
-    row: 23
-    col: 0
-    width: 24
-    height: 2
   filters:
   - name: Campaign Name
     title: Campaign Name
