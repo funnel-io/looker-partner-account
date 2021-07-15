@@ -1088,7 +1088,7 @@
     type: text
     title_text: ''
     subtitle_text: ''
-    body_text: "![alt text](https://funnel.io/_themes/funnel/img/logo.png)"
+    body_text: "![alt text](https://funnel.io/hubfs/Funnel-logo-800x243%20(1).png)"
     row: 0
     col: 10
     width: 4
